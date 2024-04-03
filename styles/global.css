@@ -1,0 +1,10 @@
+
+*:hover {
+    cursor: url('/assets/icons/cursor.png'), auto !important;
+  }
+  
+  body {
+    margin: 0;
+    cursor: url('/assets/icons/cursor.png'), auto;
+    /* font-family: Arial, Helvetica, sans-serif; */
+  }

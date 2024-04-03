@@ -1,0 +1,8 @@
+.mainbg{
+    height: 100vh;
+    background-image: url('/assets/images/bg-main.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
