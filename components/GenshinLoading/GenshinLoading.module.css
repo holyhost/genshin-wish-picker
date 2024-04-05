@@ -1,0 +1,48 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    position: absolute;
+    top: 0;
+}
+
+.loading{
+    height: 4rem;
+    /* background-image: url('/assets/images/loading.webp'); */
+    background-size: contain;
+    background-position: left;
+    background-repeat: no-repeat;
+    color: transparent;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -200px;
+    margin-top: -2rem;
+    /* animation: bg 5s linear; */
+}
+.loading2{
+    height: 4rem;
+    width: 400px;
+    /* background-image: url('/assets/images/loading.webp'); */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: transparent;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -200px;
+    margin-top: -2rem;
+    /* animation: bg 5s linear; */
+}
+
+@keyframes bg {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
