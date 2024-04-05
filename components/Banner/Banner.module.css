@@ -1,0 +1,22 @@
+.container {
+    background-size: contain;
+    height: 400px;
+}
+
+.stone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 14px;
+    background: rgb(78 78 78 / 50%);
+    padding: 1px 1px 1px 4px;
+    color: white;
+    height: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+.closeBtn {
+    width: 34px;
+    height: 34px;
+    vertical-align: middle;
+}
