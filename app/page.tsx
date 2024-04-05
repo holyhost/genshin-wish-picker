@@ -1,12 +1,11 @@
 "use client"
-import { Welcome } from '../components/Welcome/Welcome';
-import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
 import classes from './app.module.css'
 import GenshinLoaing from '@/components/GenshinLoading/GenshinLoaing';
 import { useEffect, useState } from 'react';
+import Banner from '@/components/Banner/Banner';
 
 export default function HomePage() {
-  const [progress, setProgress] = useState(0)
+  const [progress, setProgress] = useState(100)
   const [itv, setItv] = useState(null)
   useEffect(()=>{
     console.log(progress)
@@ -25,8 +24,8 @@ export default function HomePage() {
   return (
     <>
       <div className={classes.mainbg}>
-        123
         {progress > 96 ? null : <GenshinLoaing progress={progress}/>}
+        <Banner/>
       </div>
     </>
   );
