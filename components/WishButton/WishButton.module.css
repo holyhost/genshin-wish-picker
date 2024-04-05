@@ -1,0 +1,63 @@
+.container {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('/assets/images/wish-button.png');
+    color: #d4bc8f;
+    height: 100%;
+    width: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container.disabled {
+    filter: grayscale(100%);
+    /* Current draft standard */
+    -webkit-filter: grayscale(100%);
+    /* New WebKit */
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    /* Not yet supported in Gecko, Opera or IE */
+    filter: gray;
+    /* IE */
+    -webkit-filter: grayscale(1);
+    /* Old WebKit */
+}
+
+.container:hover {
+    cursor: url('/assets/icons/cursor.png'), auto;
+    color: gold;
+}
+
+.inline{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -4px;
+    margin-bottom: 4px;
+}
+.ballIcon{
+    width: 24px;
+    height: 24px;
+}
+
+@media (max-width: 992px) {
+    .container {
+        width: 160px;
+    }
+}
+
+@media (max-width: 758px) {
+    .container {
+        width: 150px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        width: 123px;
+    }
+}
