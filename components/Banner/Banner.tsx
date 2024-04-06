@@ -20,7 +20,6 @@ type Props = {
 const Banner = ({curIndex=0, posts}: Props) => {
   const [curPosition, setCurPosition] = useState(curIndex)
   const [embla, setEmbla] = useState<Embla | null>(null);
-
   const updateBanner = (index: number) => {
     embla?.scrollTo(index)
   }
@@ -29,17 +28,21 @@ const Banner = ({curIndex=0, posts}: Props) => {
     <Stack
           justify="space-between"
           gap="sm"
-          style={{height: '100vh'}}
+          className={classes.container}
         >
       <Group justify='space-between' style={{alignItems: 'flex-start'}}>
       <Text c={'white'} fw={600} mt={'14px'} w={'256px'}>
-        <img style={{ height: '50px', width: '50px', marginRight: '2rem', paddingBottom: '6px' }} alt='wish star' src='/assets/icons/star.png' className='icon' />
+        <img
+          style={{ height: '50px', width: '50px', marginRight: '2rem', paddingBottom: '6px' }} 
+          alt='wish star' src='/assets/icons/star.png' 
+          className='icon' />
         祈愿
       </Text>
       <div>
           {posts.map(
             (post, index) => 
               <img
+                loading='lazy'
                 key={'img-' + post.id}
                 onClick={()=> updateBanner(index)}
                 src={`/assets/images/${post.indexUrl}${index === curPosition ? '-selected' : ''}.png`} 
@@ -68,7 +71,7 @@ const Banner = ({curIndex=0, posts}: Props) => {
         {posts.map(post => (
           <Carousel.Slide key={post.id}>
             <Group justify='center'>
-              <img className={classes.container} alt='Genshi impact wish' src={post.coverUrl}/>
+              <img loading='lazy' className={classes.post} alt='Genshi impact wish' src={post.coverUrl}/>
             </Group>
           </Carousel.Slide>
         ))}

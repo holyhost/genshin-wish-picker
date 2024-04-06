@@ -1,4 +1,10 @@
 .container {
+    height: 100vh;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    padding-bottom: 0.5rem;
+}
+.post {
     background-size: contain;
     height: 400px;
 }
