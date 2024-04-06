@@ -1,38 +1,35 @@
-import React from 'react'
-import { Carousel } from '@mantine/carousel'
+import React, { useState } from 'react'
+import { Carousel, Embla } from '@mantine/carousel'
 import classes from './Banner.module.css'
 import { Group, Text, Stack, Center } from '@mantine/core'
 import TextButton from '../TextButton/TextButton'
 import WishButton from '../WishButton/WishButton'
 import { IconCirclePlus } from '@tabler/icons-react'
 
-const Banner = ({index=0}) => {
-  const posts = [
-    {
-      src: '/assets/images/sparkling-steps-2.png',
-      name: '',
-      id: 1
-    },
-    {
-      src: '/assets/images/born-of-ocean-swell.png',
-      name: '',
-      id: 2
-    },
-    {
-      src: '/assets/images/drifting-luminescence.png',
-      name: '',
-      id: 3
-    }
-  ]
+
+type Props = {
+  curIndex?: number,
+  posts: {
+    indexUrl: string,
+    coverUrl: string,
+    name: string,
+    id: string
+  }[]
+}
+
+const Banner = ({curIndex=0, posts}: Props) => {
+  const [curPosition, setCurPosition] = useState(curIndex)
+  const [embla, setEmbla] = useState<Embla | null>(null);
+
   const updateBanner = (index: number) => {
-    console.log(index)
+    embla?.scrollTo(index)
   }
   
   return (
     <Stack
           justify="space-between"
           gap="sm"
-          style={{height: '99vh'}}
+          style={{height: '100vh'}}
         >
       <Group justify='space-between' style={{alignItems: 'flex-start'}}>
       <Text c={'white'} fw={600} mt={'14px'} w={'256px'}>
@@ -40,9 +37,14 @@ const Banner = ({index=0}) => {
         祈愿
       </Text>
       <div>
-        <img src={`/assets/images/klee${index === 0 ? '-selected':''}.png`} alt="wish pool index" />
-        <img src={`/assets/images/eula${index === 1 ? '-selected':''}.png`} alt="wish pool index" />
-        <img src={`/assets/images/kokomi${index === 2 ? '-selected':''}.png`} alt="wish pool index" />
+          {posts.map(
+            (post, index) => 
+              <img
+                key={'img-' + post.id}
+                onClick={()=> updateBanner(index)}
+                src={`/assets/images/${post.indexUrl}${index === curPosition ? '-selected' : ''}.png`} 
+                alt="wish pool index" />
+          )}
       </div>
       <Center mt={'26px'}>
         <div className={classes.stone}>
@@ -61,11 +63,12 @@ const Banner = ({index=0}) => {
       <Carousel
         orientation='horizontal'
         loop
-        onSlideChange={updateBanner}>
+        getEmblaApi={setEmbla}
+        onSlideChange={setCurPosition}>
         {posts.map(post => (
           <Carousel.Slide key={post.id}>
             <Group justify='center'>
-              <img className={classes.container} alt='Genshi impact wish' src={post.src}/>
+              <img className={classes.container} alt='Genshi impact wish' src={post.coverUrl}/>
             </Group>
           </Carousel.Slide>
         ))}
