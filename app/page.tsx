@@ -17,7 +17,6 @@ export default function HomePage() {
       perProg = 0.6
     }
     if(loaded || progress > 96) return
-    console.log(loaded, progress)
     setTimeout(()=> updateProgress(progress + perProg), perTime)
     setLoadTime(loadTime + perTime)
       
