@@ -4,22 +4,28 @@ import GenshinLoaing from '@/components/GenshinLoading/GenshinLoaing';
 import { useEffect, useState } from 'react';
 import Banner from '@/components/Banner/Banner';
 
+
 export default function HomePage() {
-  const [progress, setProgress] = useState(100)
-  const [itv, setItv] = useState(null)
+  const [progress, setProgress] = useState(0)
+  const [loadTime, setLoadTime] = useState(0)
+  const [loaded, setLoaded] = useState(false)
   useEffect(()=>{
-    console.log(progress)
-    if(progress > 96){
-      console.log('end.')
-    }else{
-      setTimeout(()=> updateProgress(progress + 0.25), 20)
+    let perTime = 20
+    let perProg = 0.85
+    if(loaded && progress < 84){
+      perTime = 10
+      perProg = 0.6
     }
-    
+    if(loaded || progress > 96) return
+    console.log(loaded, progress)
+    setTimeout(()=> updateProgress(progress + perProg), perTime)
+    setLoadTime(loadTime + perTime)
       
-  }, [progress])
+  }, [progress, loaded])
   const updateProgress = ( p: number) => {
     setProgress(p)
   }
+
   const posts = [
     {
       indexUrl: 'klee',
@@ -40,12 +46,11 @@ export default function HomePage() {
       id: '3'
     }
   ]
-  
+
   return (
     <>
       <div className={classes.mainbg}>
-        {progress > 96 ? null : <GenshinLoaing progress={progress}/>}
-        <Banner posts={posts}/>
+        {progress > 96 ? <Banner posts={posts}/> : <GenshinLoaing progress={progress}/>}
       </div>
     </>
   );

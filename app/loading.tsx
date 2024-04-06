@@ -1,11 +1,13 @@
-import { BackgroundImage, Center, Loader } from '@mantine/core'
+"use client"
+import GenshinLoading from '@/components/GenshinLoading/GenshinLoaing'
 import React from 'react'
 
-const AppLoading = () => {
+const Loading = () => {
   return (
-    <div style={{backgroundImage: '/assets/images/loading.webp'}}>
-    </div>
+    <>
+      <GenshinLoading progress={22}/>
+    </>
   )
 }
 
-export default AppLoading
+export default Loading
