@@ -20,12 +20,32 @@ export default function HomePage() {
   const updateProgress = ( p: number) => {
     setProgress(p)
   }
+  const posts = [
+    {
+      indexUrl: 'klee',
+      coverUrl: '/assets/images/sparkling-steps-2.png',
+      name: '',
+      id: '1'
+    },
+    {
+      indexUrl: 'eula',
+      coverUrl: '/assets/images/born-of-ocean-swell.png',
+      name: '',
+      id: '2'
+    },
+    {
+      indexUrl: 'kokomi',
+      coverUrl: '/assets/images/drifting-luminescence.png',
+      name: '',
+      id: '3'
+    }
+  ]
   
   return (
     <>
       <div className={classes.mainbg}>
         {progress > 96 ? null : <GenshinLoaing progress={progress}/>}
-        <Banner/>
+        <Banner posts={posts}/>
       </div>
     </>
   );
