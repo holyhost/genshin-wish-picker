@@ -1,0 +1,22 @@
+.skipButton {
+    position: absolute;
+    top: 7px;
+    right: 5px;
+    z-index: 10;
+    opacity: 0.4;
+    transition: opacity 500ms;
+  }
+  
+  .skipButton:hover {
+    opacity: 1;
+  }
+
+  .wishContainer {
+    width: 100vw;
+    min-height: 100vh;
+    height: 100vh;
+    position: absolute;
+    z-index: 9;
+    object-fit: cover;
+    left: 0;
+  }
