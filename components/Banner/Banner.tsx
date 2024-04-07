@@ -14,10 +14,11 @@ type Props = {
     coverUrl: string,
     name: string,
     id: string
-  }[]
+  }[],
+  doWish: (count: number) => void
 }
 
-const Banner = ({curIndex=0, posts}: Props) => {
+const Banner = ({curIndex=0, posts, doWish}: Props) => {
   const [curPosition, setCurPosition] = useState(curIndex)
   const [embla, setEmbla] = useState<Embla | null>(null);
   const updateBanner = (index: number) => {
@@ -91,8 +92,8 @@ const Banner = ({curIndex=0, posts}: Props) => {
             </div>
             
             <Group>
-              <WishButton/>
-              <WishButton count={10}/>
+              <WishButton  doWish={() => doWish(1)}/>
+              <WishButton count={10} doWish={() => doWish(10)}/>
             </Group>
             
           </Group>

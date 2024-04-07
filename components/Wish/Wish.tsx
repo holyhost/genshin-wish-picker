@@ -1,9 +1,15 @@
 import React from 'react'
 import classes from './Wish.module.css'
 
-const Wish = ({ count = 1 }) => {
+type Props ={
+  count: number,
+  onClose: ()=> void
+}
+
+const Wish = ({ count = 1, onClose }: Props) => {
   const onSkip = () => {
     console.log('...on skip...')
+    onClose()
   }
   const onEnd = () => {
     console.log('...on end...')
