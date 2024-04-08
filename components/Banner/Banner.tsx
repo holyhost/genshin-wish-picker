@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { Carousel, Embla } from '@mantine/carousel'
 import classes from './Banner.module.css'
 import { Group, Text, Stack, Center } from '@mantine/core'
-import TextButton from '../TextButton/TextButton'
-import WishButton from '../WishButton/WishButton'
+import TextButton from '../Button/TextButton/TextButton'
+import WishButton from '../Button/WishButton/WishButton'
 import { IconCirclePlus } from '@tabler/icons-react'
-import NavButton from '../NavButton/NavButton'
+import NavButton from '../Button/NavButton/NavButton'
 
 
 type Props = {
