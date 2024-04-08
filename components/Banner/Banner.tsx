@@ -5,6 +5,7 @@ import { Group, Text, Stack, Center } from '@mantine/core'
 import TextButton from '../TextButton/TextButton'
 import WishButton from '../WishButton/WishButton'
 import { IconCirclePlus } from '@tabler/icons-react'
+import NavButton from '../NavButton/NavButton'
 
 
 type Props = {
@@ -67,6 +68,9 @@ const Banner = ({curIndex=0, posts, doWish}: Props) => {
       <Carousel
         orientation='horizontal'
         loop
+        styles={{control: {background: 'transparent', border: 'none'}}}
+        previousControlIcon={<NavButton name='left'/>}
+        nextControlIcon={<NavButton name='right'/>}
         getEmblaApi={setEmbla}
         onSlideChange={setCurPosition}>
         {posts.map(post => (
