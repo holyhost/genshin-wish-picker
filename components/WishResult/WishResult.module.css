@@ -1,0 +1,77 @@
+.container {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('/assets/images/bg-result.png');
+    /* color: #d4bc8f; */
+    height: 100vh;
+    width: 100vw;
+}
+
+.cover{
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+    position: absolute;
+    left: 0; top: 0; right: 0; bottom: 0;
+    margin: auto;
+    animation: showCharacter 1s ease forwards;
+}
+
+.info{
+    position: absolute;
+    bottom: 30%;
+    left: 12%;
+    display: inline-block;
+}
+
+.nameContainer{
+    position: absolute;
+    color: white;
+    font-size: 40px;
+    letter-spacing: 10px;
+    display: inline-block;
+    min-width: 18rem;
+    bottom: 4px;
+    left: 114px;
+}
+
+.star {
+    opacity: 0;
+    animation: appear 1s ease forwards;
+}
+
+.star:nth-child(1) {
+    animation-delay: 0.2s;
+}
+.star:nth-child(2) {
+    animation-delay: 0.4s;
+}
+.star:nth-child(3) {
+    animation-delay: 0.6s;
+}
+.star:nth-child(4) {
+    animation-delay: 0.8s;
+}
+.star:nth-child(5) {
+    animation-delay: 1s;
+}
+
+@keyframes appear {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+}
+
+@keyframes showCharacter {
+    from {
+        transform: scale(0.1);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}

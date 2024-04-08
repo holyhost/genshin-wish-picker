@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import classes from './Wish.module.css'
+import WishResult from '../WishResult/WishResult'
 
 type Props ={
   count: number,
@@ -7,20 +8,24 @@ type Props ={
 }
 
 const Wish = ({ count = 1, onClose }: Props) => {
+  const [end, setEnd] = useState(false)
   const onSkip = () => {
     console.log('...on skip...')
     onClose()
   }
   const onEnd = () => {
     console.log('...on end...')
+    setEnd(true)
   }
 
   return (
     <>
-      <button
+      { end ? <img
         onClick={onSkip}
-        className={classes.skipButton}>Skip</button>
-      <video
+        src='/assets/icons/closing-button.png'
+        className={classes.close}/> : null}
+        <audio src='/assets/mp3/wishing.wav' autoPlay/>
+      {end ? <WishResult/> : <video
         className={classes.wishContainer}
         onEnded={onEnd}
         playsInline
@@ -30,7 +35,7 @@ const Wish = ({ count = 1, onClose }: Props) => {
         <source
           src='/assets/videos/5starwish.mp4'
           type="video/mp4" />
-      </video>
+      </video>}
     </>
   )
 }
