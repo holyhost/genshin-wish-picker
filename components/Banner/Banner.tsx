@@ -12,7 +12,6 @@ type Props = {
   curIndex?: number,
   posts: {
     indexUrl: string,
-    coverUrl: string,
     name: string,
     id: string
   }[],
@@ -76,7 +75,7 @@ const Banner = ({curIndex=0, posts, doWish}: Props) => {
         {posts.map(post => (
           <Carousel.Slide key={post.id}>
             <Group justify='center'>
-              <img loading='lazy' className={classes.post} alt='Genshi impact wish' src={post.coverUrl}/>
+              <img loading='lazy' className={classes.post} alt='Genshi impact wish' src={'/assets/images/' + post.indexUrl+'-up.png'}/>
             </Group>
           </Carousel.Slide>
         ))}

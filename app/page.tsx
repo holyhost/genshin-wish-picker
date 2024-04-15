@@ -35,22 +35,24 @@ export default function HomePage() {
 
   const posts = [
     {
-      indexUrl: 'klee',
-      coverUrl: '/assets/images/sparkling-steps-2.png',
-      name: '',
+      indexUrl: 'naweilaite',
+      name: 'naweilaite',
       id: '1'
     },
     {
-      indexUrl: 'eula',
-      coverUrl: '/assets/images/born-of-ocean-swell.png',
+      indexUrl: 'wangye',
       name: '',
       id: '2'
     },
     {
-      indexUrl: 'kokomi',
-      coverUrl: '/assets/images/drifting-luminescence.png',
-      name: '',
+      indexUrl: 'wuqi',
+      name: 'wuqi',
       id: '3'
+    },
+    {
+      indexUrl: 'friends',
+      name: 'friends',
+      id: '4'
     }
   ]
 
