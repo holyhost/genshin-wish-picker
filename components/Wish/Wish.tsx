@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import classes from './Wish.module.css'
 import WishResult from '../WishResult/WishResult'
 
-type Props ={
+type Props = {
   count: number,
-  onClose: ()=> void
+  onClose: () => void
 }
 
 const Wish = ({ count = 1, onClose }: Props) => {
   const [end, setEnd] = useState(false)
+  const eleAudio = useRef<HTMLAudioElement>(null)
   const onSkip = () => {
     console.log('...on skip...')
     onClose()
@@ -17,25 +18,38 @@ const Wish = ({ count = 1, onClose }: Props) => {
     console.log('...on end...')
     setEnd(true)
   }
+  const onComplete = () => {
+    console.log('...on complete...')
+    eleAudio.current?.play()
+  }
 
   return (
     <>
-      { end ? <img
-        onClick={onSkip}
-        src='/assets/icons/closing-button.png'
-        className={classes.close}/> : null}
-        <audio src='/assets/mp3/wishing.wav' autoPlay/>
-      {end ? <WishResult/> : <video
-        className={classes.wishContainer}
-        onEnded={onEnd}
-        playsInline
-        autoPlay
-        muted
-      >
-        <source
-          src='/assets/videos/5starwish.mp4'
-          type="video/mp4" />
-      </video>}
+      {end ? (
+        <>
+          <img
+            onClick={onSkip}
+            src='/assets/icons/closing-button.png'
+            className={classes.close} />
+            <WishResult />
+        </>
+      ) : (
+        <>
+          <video
+            className={classes.wishContainer}
+            onEnded={onEnd}
+            onCanPlayThrough={onComplete}
+            playsInline
+            autoPlay
+            muted
+          >
+            <source
+              src='/assets/videos/5starwish.mp4'
+              type="video/mp4" />
+          </video>
+          <audio ref={eleAudio} src='/assets/mp3/wishing.wav' preload='auto' />
+        </>
+      )}
     </>
   )
 }
