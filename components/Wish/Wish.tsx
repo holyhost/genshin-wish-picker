@@ -1,6 +1,7 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import classes from './Wish.module.css'
 import WishResult from '../WishResult/WishResult'
+import GenshinLoading from '../GenshinLoading/GenshinLoaing'
 
 type Props = {
   count: number,
@@ -10,6 +11,9 @@ type Props = {
 const Wish = ({ count = 1, onClose }: Props) => {
   const [end, setEnd] = useState(false)
   const eleAudio = useRef<HTMLAudioElement>(null)
+  const [progress, setProgress] = useState(0)
+  const [loadTime, setLoadTime] = useState(0)
+  const [loaded, setLoaded] = useState(false)
   const onSkip = () => {
     console.log('...on skip...')
     onClose()
@@ -20,8 +24,22 @@ const Wish = ({ count = 1, onClose }: Props) => {
   }
   const onComplete = () => {
     console.log('...on complete...')
+    setLoaded(true)
     eleAudio.current?.play()
   }
+
+  useEffect(()=>{
+    let perTime = 20
+    let perProg = 0.35
+    if(loaded && progress < 84){
+      perTime = 10
+      perProg = 0.6
+    }
+    if(loaded || progress > 96) return
+    setTimeout(()=> setProgress(progress + perProg), perTime)
+    setLoadTime(loadTime + perTime)
+      
+  }, [progress, loaded])
 
   return (
     <>
@@ -50,6 +68,7 @@ const Wish = ({ count = 1, onClose }: Props) => {
           <audio ref={eleAudio} src='/assets/mp3/wishing.wav' preload='auto' />
         </>
       )}
+      {loaded ? null : <GenshinLoading progress={progress}/>}
     </>
   )
 }
