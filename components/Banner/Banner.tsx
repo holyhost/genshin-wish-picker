@@ -15,7 +15,7 @@ type Props = {
     name: string,
     id: string
   }[],
-  doWish: (count: number) => void
+  doWish: (count: number, position: number) => void
 }
 
 const Banner = ({curIndex=0, posts, doWish}: Props) => {
@@ -95,8 +95,8 @@ const Banner = ({curIndex=0, posts, doWish}: Props) => {
             </div>
             
             <Group>
-              <WishButton  doWish={() => doWish(1)}/>
-              <WishButton count={10} doWish={() => doWish(10)}/>
+              <WishButton  doWish={() => doWish(1, curPosition)}/>
+              <WishButton count={10} doWish={() => doWish(10, curPosition)}/>
             </Group>
             
           </Group>

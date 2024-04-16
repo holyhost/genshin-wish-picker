@@ -2,18 +2,21 @@ import React, { useEffect, useRef, useState } from 'react'
 import classes from './Wish.module.css'
 import WishResult from '../WishResult/WishResult'
 import GenshinLoading from '../GenshinLoading/GenshinLoaing'
+import { Characters } from '@/constants/characters'
 
 type Props = {
   count: number,
+  name: string,
   onClose: () => void
 }
 
-const Wish = ({ count = 1, onClose }: Props) => {
+const Wish = ({ count = 1, name = '', onClose }: Props) => {
   const [end, setEnd] = useState(false)
   const eleAudio = useRef<HTMLAudioElement>(null)
   const [progress, setProgress] = useState(0)
   const [loadTime, setLoadTime] = useState(0)
   const [loaded, setLoaded] = useState(false)
+  const friend = Characters.find(c => c.id == name) || Characters[Math.floor(Math.random()*Characters.length)]
   const onSkip = () => {
     console.log('...on skip...')
     onClose()
@@ -49,7 +52,7 @@ const Wish = ({ count = 1, onClose }: Props) => {
             onClick={onSkip}
             src='/assets/icons/closing-button.png'
             className={classes.close} />
-            <WishResult />
+            <WishResult friend={friend} />
         </>
       ) : (
         <>

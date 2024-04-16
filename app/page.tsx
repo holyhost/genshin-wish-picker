@@ -4,6 +4,7 @@ import GenshinLoaing from '@/components/GenshinLoading/GenshinLoaing';
 import { useEffect, useState } from 'react';
 import Banner from '@/components/Banner/Banner';
 import Wish from '@/components/Wish/Wish';
+import { count } from 'console';
 
 
 export default function HomePage() {
@@ -12,6 +13,7 @@ export default function HomePage() {
   const [loaded, setLoaded] = useState(false)
   const [wishing, setWishing] = useState(false)
   const [wishCount, setWishCount] = useState(1)
+  const [aimName, setAimName] = useState('')
   useEffect(()=>{
     let perTime = 20
     let perProg = 0.85
@@ -28,9 +30,10 @@ export default function HomePage() {
     setProgress(p)
   }
 
-  const startWish = (count: number)=>{
+  const startWish = (count: number, position: number)=>{
     setWishing(true)
     setWishCount(count)
+    setAimName(posts[position].indexUrl)
   }
 
   const posts = [
@@ -61,7 +64,7 @@ export default function HomePage() {
       <div className={classes.mainbg}>
         {progress > 96 ? 
           (wishing ? 
-            <Wish count={1} onClose={()=> setWishing(false)}/> : 
+            <Wish count={wishCount} name={aimName} onClose={()=> setWishing(false)}/> : 
               <Banner doWish={startWish} posts={posts}/>
           ) : 
           <GenshinLoaing progress={progress}/>}
