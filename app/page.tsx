@@ -62,12 +62,11 @@ export default function HomePage() {
   return (
     <>
       <div className={classes.mainbg}>
-        {progress > 96 ? 
-          (wishing ? 
+          {wishing ? 
             <Wish count={wishCount} name={aimName} onClose={()=> setWishing(false)}/> : 
-              <Banner doWish={startWish} posts={posts}/>
-          ) : 
-          <GenshinLoaing progress={progress}/>}
+              <Banner doWish={startWish} posts={posts}/>}
+          
+          {progress > 96 ? null : <GenshinLoaing progress={progress}/>}
       </div>
     </>
   );

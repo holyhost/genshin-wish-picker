@@ -18,11 +18,6 @@ const WishResult = ({friend}: Props) => {
           {friend.name}
           <p style={{lineHeight: '2rem', margin:'0', marginTop: '-4px'}}>
             {new Array(friend.star).fill(1).map((i,j) => <IconStarFilled key={i+j} className={classes.star} color='gold'/>)}
-            {/* <IconStarFilled className={classes.star} color='gold'/>
-            <IconStarFilled className={classes.star} color='gold'/>
-            <IconStarFilled className={classes.star} color='gold'/>
-            <IconStarFilled className={classes.star} color='gold'/>
-            <IconStarFilled className={classes.star} color='gold'/> */}
         </p>
         </div>
         
