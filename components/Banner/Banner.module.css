@@ -6,7 +6,25 @@
 }
 .post {
     background-size: contain;
-    height: 400px;
+    height: 540px;
+}
+
+.title {
+    font-size: 22px;
+    width: 256px;
+}
+
+.indexBanner{
+    height: 90px;
+    object-fit: contain;
+}
+
+.titleIcon {
+    height: 70px;
+    width: 70px;
+    margin-right: 3rem;
+    padding-bottom: 6px;
+    object-fit: contain;
 }
 
 .stone {
@@ -25,4 +43,59 @@
     width: 34px;
     height: 34px;
     vertical-align: middle;
+}
+
+@media (min-width: 2166px )  {
+    .container {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+    .post {
+        height: 630px;
+    }
+
+    .title {
+        font-size: 32px;
+        width: 250px;
+    }
+    .stone {
+        margin-right: .5rem;
+    }
+    .indexBanner{
+        height: 110px;
+        object-fit: contain;
+    }
+    .titleIcon {
+        height: 150px;
+        width: 150px;
+        margin-right: 2rem;
+        padding-bottom: 6px;
+    }
+}
+@media (max-width: 1366px)  {
+    .container {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+    .post {
+        height: 460px;
+    }
+
+    .title {
+        font-size: 22px;
+        width: 150px;
+    }
+    .titleIcon {
+        height: 50px;
+        width: 50px;
+        margin-right: 2rem;
+        padding-bottom: 6px;
+    }
+    .stone {
+        margin-right: .5rem;
+    }
+    .indexBanner{
+        height: 70px;
+        object-fit: contain;
+    }
 }
