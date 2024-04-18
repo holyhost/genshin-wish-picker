@@ -25,6 +25,37 @@
     display: inline-block;
 }
 
+.nickName{
+    position: absolute;
+    top: 26%;
+    right: 8%;
+    display: flex;
+    height: 420px;
+    width: 420px;
+    min-height: 330px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('/assets/images/bg-name6.png');
+    color: white;
+    font-size: 60px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: skew(-23deg, 7deg);
+    /* background: rgba(255, 255, 255, 0.4); */
+    /* animation: appear 3s forwards; */
+    
+}
+
+.threeD{
+    text-shadow:1px 0px #f2df0c, 1px 2px #b1a412, 3px 1px rgb(222, 225, 5),
+    2px 3px #b1a412, 4px 2px #f2df0c, 4px 4px #b1a412,
+    5px 3px #f2df0c, 5px 5px #b1a412, 7px 4px #f2df0c,
+    2px 3px #b1a412, 4px 2px #f2df0c, 4px 4px #b1a412,
+    5px 3px #f2df0c, 5px 5px #b1a412, 7px 4px #f2df0c
+}
+
 .nameContainer{
     position: absolute;
     color: white;
@@ -66,6 +97,15 @@
     }
 }
 
+@keyframes shine {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 100%;
+    }
+}
+
 @keyframes showCharacter {
     from {
         transform: scale(0.1);
@@ -74,4 +114,11 @@
     to {
         transform: scale(1);
     }
+}
+
+@media (max-width: 1140px)  {
+    .nickName {
+        right: 5%;
+    }
+    
 }

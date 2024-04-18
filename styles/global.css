@@ -9,6 +9,7 @@
     font-weight: 600;
     user-select: none;
     color: #343434;
+    overflow: hidden;
     /* font-family: Arial, Helvetica, sans-serif; */
   }
 
