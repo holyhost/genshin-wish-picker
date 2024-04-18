@@ -30,6 +30,7 @@
 .container:hover {
     cursor: url('/assets/icons/cursor.png'), auto;
     color: gold;
+    transform: scale(1.1, 1.04);
 }
 
 .inline{

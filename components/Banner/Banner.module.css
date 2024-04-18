@@ -43,6 +43,19 @@
     width: 34px;
     height: 34px;
     vertical-align: middle;
+    opacity: 0.7;
+}
+
+.closeBtn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+.addIcon {
+    opacity: 0.8;
+}
+.addIcon:hover {
+    opacity: 1;
+    transform: scale(1.1);
 }
 
 @media (min-width: 2166px )  {

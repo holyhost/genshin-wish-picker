@@ -20,6 +20,7 @@ type Props = {
 
 const Banner = ({ curIndex = 0, posts, doWish }: Props) => {
   const [curPosition, setCurPosition] = useState(curIndex)
+  const [stoneNum, setStoneNum] = useState(19998)
   const [embla, setEmbla] = useState<Embla | null>(null);
   const updateBanner = (index: number) => {
     embla?.scrollTo(index)
@@ -53,8 +54,8 @@ const Banner = ({ curIndex = 0, posts, doWish }: Props) => {
         <Center mt={'26px'}>
           <div className={classes.stone}>
             <img src='/assets/icons/stone.png' className='icon' alt='Genshin stone' />
-            <span style={{ marginLeft: '.5rem', marginRight: '.5rem' }}>19998</span>
-            <IconCirclePlus color='#e3e3e3' />
+            <span style={{ marginLeft: '.5rem', marginRight: '.5rem' }}>{stoneNum}</span>
+            <IconCirclePlus className={classes.addIcon} color='#e3e3e3' onClick={()=> setStoneNum(stoneNum + 1)}/>
           </div>
           <div className={classes.stone}>
             <img src='/assets/icons/pink-ball.png' className='icon' alt='Genshin stone' />
