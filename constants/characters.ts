@@ -185,7 +185,7 @@ export const Characters: Character[] = [
         star: 5
     },
     {
-        name: '枫原王叶',
+        name: '枫原万叶',
         type: Ele.Wind,
         nick: '',
         id: 'wangye',
