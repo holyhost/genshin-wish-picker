@@ -18,7 +18,6 @@ const WishResult = ({count=1, friends}: Props) => {
     setReady(true)
   }
   const goNext = ()=> {
-    console.log('...go next')
     if(leftCount){
       eleAudio.current?.play()
       setFriend(friends[friends.length - leftCount])
@@ -26,7 +25,6 @@ const WishResult = ({count=1, friends}: Props) => {
     }
     
   }
-  console.log(count)
   return (
     <div className={classes.container} onClick={goNext}>
       <audio ref={eleAudio} onCanPlayThrough={playResult} src='/assets/mp3/wished.wav'/>
