@@ -38,10 +38,10 @@ const WishResult = ({count=1, friends}: Props) => {
                 {f.nick && <div className={classes.roleNickContainer}>
                   {f.nick.split('').map(w => <span key={w} className={classes.roleNick + ' ' + classes.star + ' ' + classes.threeD}>{w}</span>)}
                 </div>}
-                <div className={classes.extra}>
-                  <img src="/assets/icons/extra-star-5.png" alt="extra" />
-                  <img style={{marginBottom: '16px'}} src="/assets/icons/extra-5.png" alt="extra" />
-                </div>
+                {f.star > 3 && <div className={classes.extra}>
+                  <img src={`/assets/icons/extra-star-${f.star}.png`} alt="extra" />
+                  <img style={{marginBottom: '16px'}} src={`/assets/icons/extra-${f.star}.png`} alt="extra" />
+                </div>}
               </div>
             ))}
       </div> : <img className={classes.cover} src={`/assets/images/character/${friend.id}.png`}/>}
