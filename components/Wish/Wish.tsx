@@ -16,7 +16,11 @@ const Wish = ({ count = 1, name = '', onClose }: Props) => {
   const [progress, setProgress] = useState(0)
   const [loadTime, setLoadTime] = useState(0)
   const [loaded, setLoaded] = useState(false)
-  const friend = Characters.find(c => c.id == name) || Characters[Math.floor(Math.random()*Characters.length)]
+  const friends = [Characters.find(c => c.id == name) || Characters[Math.floor(Math.random()*Characters.length)]]
+  for (let index = 0; index < count-1; index++) {
+    friends.push(Characters[Math.floor(Math.random()*Characters.length)])
+    
+  }
   const onSkip = () => {
     console.log('...on skip...')
     onClose()
@@ -52,7 +56,7 @@ const Wish = ({ count = 1, name = '', onClose }: Props) => {
             onClick={onSkip}
             src='/assets/icons/closing-button.png'
             className={classes.close} />
-            <WishResult friend={friend} />
+            <WishResult friends={friends} count={count}/>
         </>
       ) : (
         <>

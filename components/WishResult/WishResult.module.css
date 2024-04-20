@@ -17,6 +17,19 @@
     margin: auto;
     animation: showCharacter 1s ease forwards;
 }
+.gonext{
+    height: 3rem;
+    width: 4rem;
+    object-fit: fill;
+    opacity: 0.8;
+    position: absolute;
+    right: 10%;
+    bottom: 8%;
+}
+.gonext:hover{
+    transform: scale(1.08);
+    opacity: 1;
+}
 
 .info{
     position: absolute;
