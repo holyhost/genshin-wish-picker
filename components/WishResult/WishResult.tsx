@@ -9,6 +9,7 @@ type Props = {
 }
 
 const WishResult = ({count=1, friends}: Props) => {
+  friends = friends.sort((a, b) => b.star-a.star)
   const [ready, setReady] = useState(false)
   const [showRoles, setShowRoles] = useState(false)
   const [friend, setFriend] = useState(friends[0])

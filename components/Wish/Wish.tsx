@@ -19,7 +19,6 @@ const Wish = ({ count = 1, name = '', onClose }: Props) => {
   const friends = [Characters.find(c => c.id == name) || Characters[Math.floor(Math.random()*Characters.length)]]
   for (let index = 0; index < count-1; index++) {
     friends.push(Characters[Math.floor(Math.random()*Characters.length)])
-    
   }
   const onSkip = () => {
     console.log('...on skip...')
