@@ -2,15 +2,23 @@
 import { Grid, Group, Stack, Text } from '@mantine/core'
 import { identity } from '@mantine/core/lib/core/factory/factory'
 import { IconDiamondFilled, IconDiamonds, IconSquareRotated, IconSquareRotatedFilled } from '@tabler/icons-react'
-import React, { useState } from 'react'
+import React, { ReactElement, useState } from 'react'
 import classes from './Content.module.css'
+import ImportData from './ImportData/ImportData'
+
+type MenuType = {
+    selected: boolean,
+    id: string,
+    title: string,
+    component: any
+}
 
 const menuConfig = [
     {
         selected: true,
         id: 'name',
         title: '名字',
-        component: null
+        component: <ImportData/>
     },
     {
         selected: false,
@@ -33,7 +41,7 @@ const menuConfig = [
 ]
 
 const Content = () => {
-    const [menu, setMenu] = useState([...menuConfig])
+    const [menu, setMenu] = useState<MenuType[]>([...menuConfig])
     const updateMenu = (id: string) =>{
         menu.map((m: any) => m.id == id ? (m.selected = true): (m.selected = false))
         setMenu([...menu])
@@ -52,7 +60,9 @@ const Content = () => {
                         
                 </Stack>
             </Grid.Col>
-            <Grid.Col span='auto'>2</Grid.Col>
+            <Grid.Col span='auto'>
+                {menu.find(m => m.selected)?.component}
+            </Grid.Col>
         </Grid>
     )
 }
