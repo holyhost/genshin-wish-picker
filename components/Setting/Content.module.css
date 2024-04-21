@@ -1,0 +1,14 @@
+
+.item {
+    padding: .5rem 2rem .5rem .6rem;
+    opacity: 0.8;
+}
+.itemSelected {
+    padding: .5rem 2rem .5rem .6rem;
+    background-color: aquamarine;
+    transform: translate(4px, 2px) scale(1.05);
+}
+.item:hover{
+    transform: scale(1.05);
+    opacity: 1;
+}

@@ -20,6 +20,17 @@
   height: 20px;
   vertical-align: middle;
 }
+.iconBig{
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+}
+.icon .iconBig:hover {
+  transform: scale(1.07);
+}
+.iconBig:hover {
+  transform: scale(1.07);
+}
 
 img {
   -webkit-user-drag: none;

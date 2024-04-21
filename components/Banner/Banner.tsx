@@ -4,8 +4,9 @@ import classes from './Banner.module.css'
 import { Group, Text, Stack, Center } from '@mantine/core'
 import TextButton from '../Button/TextButton/TextButton'
 import WishButton from '../Button/WishButton/WishButton'
-import { IconCirclePlus } from '@tabler/icons-react'
+import { IconCirclePlus, IconSettings } from '@tabler/icons-react'
 import NavButton from '../Button/NavButton/NavButton'
+import Link from 'next/link'
 
 
 type Props = {
@@ -61,7 +62,10 @@ const Banner = ({ curIndex = 0, posts, doWish }: Props) => {
             <img src='/assets/icons/pink-ball.png' className='icon' alt='Genshin stone' />
             <span style={{ marginLeft: '.5rem', marginRight: '.5rem' }}>990</span>
           </div>
-          <img src='/assets/icons/closing-button.png' className={classes.closeBtn} alt='Genshin stone' />
+          <Link href={'/setting'} className={classes.closeBtn}>
+            <IconSettings color='#bba884' size={36}/>
+          </Link>
+          
         </Center>
 
       </Group>

@@ -1,0 +1,50 @@
+.container {
+    background: url('/assets/images/bg-main.png');
+    height: 100vh;
+    width: 100vw;
+    background-position: center;
+    background-size: cover;
+    color: #bba884;
+    font-weight: 600;
+}
+
+.titleContainer {
+    background-color: rgb(47 47 47 / 50%);
+    height: 4rem;
+    vertical-align: middle;
+    padding: 10px 5rem;
+}
+.contentContainer {
+    margin-top: 2rem;
+    padding: 10px 5rem;
+    height: 100%;
+    width: 100%;
+}
+
+.blurBox{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    z-index: 0;
+    backdrop-filter: blur(20px);
+    position: relative;
+    background-color: rgb(47 47 47 / 30%);
+    /* background-color: rgba(255, 255, 255, 0.5); */
+    /* background-color: rgba(255,255,255,0.2); */
+}
+.blurBox::before{
+    content: "";
+    filter: blur(10px);
+
+}
+
+/*  
+item left bg :#c9cac2  rgb(201,202,194)
+     right bg : #c8bfb0  rgb(200,191,176)
+     button: #ece5d8  rgb(236,229,216)
+*/
+.settingIcon{
+    vertical-align: middle;
+    height: 50px;
+    margin-right: 2.3rem;
+}
