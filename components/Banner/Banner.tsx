@@ -63,7 +63,7 @@ const Banner = ({ curIndex = 0, posts, doWish }: Props) => {
             <span style={{ marginLeft: '.5rem', marginRight: '.5rem' }}>990</span>
           </div>
           <Link href={'/setting'} className={classes.closeBtn}>
-            <IconSettings color='#bba884' size={36}/>
+            <IconSettings color='#ffb732' stroke={3} size={34}/>
           </Link>
           
         </Center>
