@@ -57,7 +57,7 @@ const WishResult = ({count=1, friends}: Props) => {
           </div>
         </div>
         {friend.nick && <div className={classes.nickName + ' ' + classes.threeD}>
-          { friend.nick.split('').map(i => <span className={classes.star} key={i}>{i}
+          { friend.nick.split('').map((i, ind) => <span className={classes.star} key={ind}>{i}
             </span>)}
         </div> }
         </>) : null}

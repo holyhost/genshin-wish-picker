@@ -3,6 +3,7 @@ import classes from './Wish.module.css'
 import WishResult from '../WishResult/WishResult'
 import GenshinLoading from '../GenshinLoading/GenshinLoaing'
 import { Characters } from '@/constants/characters'
+import useFriendsStore from '@/hooks/friends.store'
 
 type Props = {
   count: number,
@@ -16,20 +17,24 @@ const Wish = ({ count = 1, name = '', onClose }: Props) => {
   const [progress, setProgress] = useState(0)
   const [loadTime, setLoadTime] = useState(0)
   const [loaded, setLoaded] = useState(false)
+  const store = useFriendsStore()
   const friends = [Characters.find(c => c.id == name) || Characters[Math.floor(Math.random()*Characters.length)]]
   for (let index = 0; index < count-1; index++) {
     friends.push(Characters[Math.floor(Math.random()*Characters.length)])
   }
+  const slen = store.friends.length
+  if(slen){
+    // if import names , give a random name to display
+    const dlen = store.friends[0].data.length
+    friends[0].nick = store.friends[0].data[Math.floor(Math.random()*dlen)].nick
+  }
   const onSkip = () => {
-    console.log('...on skip...')
     onClose()
   }
   const onEnd = () => {
-    console.log('...on end...')
     setEnd(true)
   }
   const onComplete = () => {
-    console.log('...on complete...')
     setLoaded(true)
     eleAudio.current?.play()
   }
