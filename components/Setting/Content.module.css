@@ -1,12 +1,13 @@
 
 .item {
-    padding: .5rem 2rem .5rem .6rem;
+    padding: .5rem 4rem .5rem .6rem;
     opacity: 0.8;
 }
 .itemSelected {
-    padding: .5rem 2rem .5rem .6rem;
-    background-color: aquamarine;
+    padding: .5rem 4rem .5rem .6rem;
+    background: linear-gradient(0deg, transparent, #0866a9, transparent);
     transform: translate(4px, 2px) scale(1.05);
+    border-radius: 50px;
 }
 .item:hover{
     transform: scale(1.05);
