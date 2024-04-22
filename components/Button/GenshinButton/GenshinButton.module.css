@@ -14,7 +14,7 @@
 .container:hover {
     opacity: 1;
     transform: scale(1.05);
-    border: 3px solid white;
+    border: 3px solid rgb(199, 199, 199);
 }
 
 .container img{
