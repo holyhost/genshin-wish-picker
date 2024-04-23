@@ -2,7 +2,7 @@ import { Character } from "@/constants/characters";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
-interface GroupType {
+export interface GroupType {
     id: string,
     data: Character[],
     name: string,
@@ -11,14 +11,24 @@ interface GroupType {
 
 interface FriendsState {
     friends: GroupType[],
-    update: (f: GroupType)=> void
+    addGroup: (f: GroupType)=> void,
+    updateGroup: (f: GroupType)=> void,
+    removeGroup: (id: string)=> void
 }
 
 const useFriendsStore = create<FriendsState>()(
     persist(
         (set)=>({
             friends: [],
-            update: (f)=> set((state) => ({friends: [...state.friends, f]}))
+            addGroup: (f)=> set((state) => ({friends: [...state.friends, f]})),
+            updateGroup: (f)=> set((state) => {
+                const tempArr = state.friends.filter(item => item.id !== f.id)
+                return {friends: [...tempArr, f]}
+            }, true),
+            removeGroup: (id: string)=> set((state) => {
+                const tempArr = state.friends.filter(item => item.id !== id)
+                return {friends: [...tempArr]}
+            }, true)
         }),
         {
             name: 'all-friends',
