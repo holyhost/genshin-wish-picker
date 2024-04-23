@@ -5,6 +5,7 @@ import { IconDiamondFilled, IconDiamonds, IconSquareRotated, IconSquareRotatedFi
 import React, { ReactElement, useState } from 'react'
 import classes from './Content.module.css'
 import ImportData from './ImportData/ImportData'
+import GroupData from './GroupData/GroupData'
 
 type MenuType = {
     selected: boolean,
@@ -16,8 +17,14 @@ type MenuType = {
 const menuConfig = [
     {
         selected: true,
-        id: 'name',
-        title: '名字',
+        id: 'group',
+        title: '我的分组',
+        component: <GroupData/>
+    },
+    {
+        selected: false,
+        id: 'import-data',
+        title: '导入信息',
         component: <ImportData/>
     },
     {
@@ -41,11 +48,8 @@ const menuConfig = [
 ]
 
 const Content = () => {
+    const [curIndex, setcurIndex] = useState('group')
     const [menu, setMenu] = useState<MenuType[]>([...menuConfig])
-    const updateMenu = (id: string) =>{
-        menu.map((m: any) => m.id == id ? (m.selected = true): (m.selected = false))
-        setMenu([...menu])
-    }
     return (
         <Grid>
             <Grid.Col span='content'>
@@ -53,15 +57,14 @@ const Content = () => {
                     align="flex-start"
                     justify="flex-start"
                     >
-                        {menuConfig.map(item => <Group className={item.selected ? classes.itemSelected:classes.item} key={item.id} onClick={()=> updateMenu(item.id)}>
-                            {item.selected ? <IconSquareRotatedFilled size={16} color='#bba884' stroke={4}/> :<IconSquareRotated size={16} color='#bba884' stroke={4}/>}
+                        {menu.map((item) => <Group className={item.id == curIndex ? classes.itemSelected:classes.item} key={item.id} onClick={()=> setcurIndex(item.id)}>
+                            <IconSquareRotated size={16} color='#bba884' stroke={4}/>
                             <Text fw={600}> {item.title}</Text>
                         </Group> )}
-                        
                 </Stack>
             </Grid.Col>
             <Grid.Col span='auto'>
-                {menu.find(m => m.selected)?.component}
+                {menu.find(m => m.id == curIndex)?.component}
             </Grid.Col>
         </Grid>
     )

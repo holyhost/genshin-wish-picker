@@ -1,7 +1,8 @@
 
 .item {
-    padding: .5rem 11rem .5rem .6rem;
+    padding: .5rem 1rem .5rem .6rem;
     opacity: 0.8;
+    max-width: 280px;
 }
 .itemSelected {
     padding: .5rem 11rem .5rem 1.3rem;
@@ -9,7 +10,7 @@
     background: url('/assets/images/bg-item-selected.png');
     transform: translate(4px, 2px) scale(1.05);
     /* border-radius: 50px; */
-    border-left: solid;
+    border-left: solid 2px #ffd990;
     background-size: contain;
     background-repeat: no-repeat;
 }
