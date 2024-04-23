@@ -35,3 +35,11 @@
 img {
   -webkit-user-drag: none;
 }
+
+.user{
+  object-fit: contain;
+}
+.user:hover{
+  transform: scale(1.21);
+  /* border: solid 2px rgb(201, 201, 201); */
+}
