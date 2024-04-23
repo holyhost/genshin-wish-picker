@@ -1,13 +1,17 @@
 
 .item {
-    padding: .5rem 4rem .5rem .6rem;
+    padding: .5rem 11rem .5rem .6rem;
     opacity: 0.8;
 }
 .itemSelected {
-    padding: .5rem 4rem .5rem .6rem;
+    padding: .5rem 11rem .5rem 1.3rem;
     background: linear-gradient(0deg, transparent, #0866a9, transparent);
+    background: url('/assets/images/bg-item-selected.png');
     transform: translate(4px, 2px) scale(1.05);
-    border-radius: 50px;
+    /* border-radius: 50px; */
+    border-left: solid;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 .item:hover{
     transform: scale(1.05);
