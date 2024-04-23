@@ -14,14 +14,14 @@ const ImportData = () => {
     const [newFriends, setNewFriends] = useState<string[]>([])
     const [opened, { open, close }] = useDisclosure(false);
     const [contentError, setContentError] = useState('')
-    const {friends, update} = useFriendsStore()
+    const {friends, addGroup} = useFriendsStore()
     const saveData = ()=> {
         close()
         const d = new Date()
         const updateTime = getFormatDateTime(d)
         const newGenshinFriends = Characters.sort(()=> Math.random() -0.5)
         const len = newGenshinFriends.length
-        update({
+        addGroup({
             id: nanoid(),
             data: newFriends.map((name, i) => ({...newGenshinFriends[i%len], nick: name})),
             updateTime,
