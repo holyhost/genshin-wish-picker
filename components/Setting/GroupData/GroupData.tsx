@@ -3,7 +3,7 @@ import GenshinButton from '@/components/Button/GenshinButton/GenshinButton'
 import { Characters } from '@/constants/characters'
 import { getFormatDateTime } from '@/hooks/date.util'
 import useFriendsStore, { GroupType } from '@/hooks/friends.store'
-import { Accordion, Avatar, Button, Center, Container, Group, Input, Mark, Menu, Modal, Stack, Table, Text, Textarea, Title, rem } from '@mantine/core'
+import { Accordion, Avatar, Paper, Center, ScrollArea, Group, Input, Mark, Menu, Modal, Stack, Table, Text, Textarea, Title, rem } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { nanoid } from 'nanoid'
 import React, { MouseEvent, useState } from 'react'
@@ -46,8 +46,8 @@ const GroupData = () => {
     }
 
   return (
-    <Container bg={'white'}>
-        <Stack>
+    <Paper shadow='md' pl={20} pt={10}>
+        <ScrollArea h={'82vh'} scrollbarSize='0'>
             <Title order={3}>共有{friends.length}个分组</Title>
             <Accordion>
                 {friends.map((f,fin) => <Accordion.Item key={f.id} value={f.name}>
@@ -106,7 +106,7 @@ const GroupData = () => {
                     </Accordion.Panel>
                 </Accordion.Item>)}
             </Accordion>
-        </Stack>
+        </ScrollArea>
         <Modal opened={opened} onClose={close} title="修改分组名称" centered>
             {group && <Stack>
                 <Text><Mark> {group.name} </Mark></Text>
@@ -126,7 +126,7 @@ const GroupData = () => {
                 </Group>
             </Stack>}
         </Modal>
-    </Container>
+    </Paper>
   )
 }
 

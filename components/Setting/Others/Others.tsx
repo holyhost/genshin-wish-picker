@@ -5,7 +5,7 @@ import React from 'react'
 const Others = () => {
     return (
         <Paper shadow='md' pl={20} pt={10}>
-            <ScrollArea h={'80vh'} scrollbarSize='0'>
+            <ScrollArea h={'82vh'} scrollbarSize='0'>
                 <Title order={3}>
                     问题/意见建议/反馈
                 </Title>
@@ -27,7 +27,7 @@ const Others = () => {
                     <Timeline.Item bullet={<IconCoffee size={16} />} title="2. 请作者喝一杯咖啡" lineVariant='dashed'>
                         <Text c="dimmed" size="sm">编码不易，请作者喝一杯咖啡，继续加油打代码！</Text>
                         <Text c="dimmed" size="sm">打赏并留言，作者能第一时间收到通知！</Text>
-                        <Group>
+                        <Group mt={5}>
                             <Card shadow="sm" padding="xs" radius="md" withBorder>
                                 <Card.Section>
                                     <Image
@@ -37,7 +37,7 @@ const Others = () => {
                                     />
                                 </Card.Section>
 
-                                <Button color="#bba884" fullWidth mt="1" radius="md">
+                                <Button size='xs' color="#bba884" fullWidth mt="1" radius="md">
                                     微 信
                                 </Button>
                             </Card>
@@ -50,7 +50,7 @@ const Others = () => {
                                     />
                                 </Card.Section>
 
-                                <Button color="#bba884" fullWidth mt="1" radius="md">
+                                <Button size='xs' color="#bba884" fullWidth mt="1" radius="md">
                                     支付宝
                                 </Button>
                             </Card>
@@ -75,7 +75,7 @@ const Others = () => {
                         <Text c="indigo" size="sm">3. 查看我创建的分组信息： 修改分组名称，删除分组数据</Text>
                         <Text size="xs" mt={4}>2024-04-24</Text>
                     </Timeline.Item>
-                    <Timeline.Item bullet={<IconGitBranch size={12} />} title="创建项目 / Create Repository">
+                    <Timeline.Item mb={20} bullet={<IconGitBranch size={12} />} title="创建项目 / Create Repository">
                         <Text c="indigo" size="md">框架/Framwork: Nextjs</Text>
                         <Text c="indigo" size="md">组件库/UI Libiary: Mantine</Text>
                         <Text c="indigo" size="md">数据库/Database: MongoDB</Text>
