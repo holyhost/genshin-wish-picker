@@ -6,6 +6,7 @@ import React, { ReactElement, useState } from 'react'
 import classes from './Content.module.css'
 import ImportData from './ImportData/ImportData'
 import GroupData from './GroupData/GroupData'
+import Others from './Others/Others'
 
 type MenuType = {
     selected: boolean,
@@ -24,7 +25,7 @@ const menuConfig = [
     {
         selected: false,
         id: 'import-data',
-        title: '导入信息',
+        title: '新增分组',
         component: <ImportData/>
     },
     {
@@ -43,7 +44,7 @@ const menuConfig = [
         selected: false,
         id: 'others',
         title: '其他',
-        component: null
+        component: <Others/>
     }
 ]
 
