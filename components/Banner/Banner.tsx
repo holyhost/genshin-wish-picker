@@ -48,7 +48,7 @@ const Banner = ({ curIndex = 0, posts, doWish }: Props) => {
                 loading='lazy'
                 key={'img-' + post.id}
                 onClick={() => updateBanner(index)}
-                src={`/assets/images/${post.indexUrl}${index === curPosition ? '-selected' : ''}.png`}
+                src={`/assets/images/banner/${post.indexUrl}${index === curPosition ? '-selected' : ''}.png`}
                 alt="wish pool index" />
           )}
         </div>
@@ -80,7 +80,7 @@ const Banner = ({ curIndex = 0, posts, doWish }: Props) => {
         {posts.map(post => (
           <Carousel.Slide key={post.id}>
             <Group justify='center'>
-              <img loading='lazy' className={classes.post} alt='Genshi impact wish' src={'/assets/images/' + post.indexUrl + '-up.png'} />
+              <img loading='lazy' className={classes.post} alt='Genshi impact wish' src={'/assets/images/banner/' + post.indexUrl + '-up.png'} />
             </Group>
           </Carousel.Slide>
         ))}
