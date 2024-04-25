@@ -38,18 +38,18 @@ export default function HomePage() {
 
   const posts = [
     {
-      indexUrl: 'naweilaite',
-      name: 'naweilaite',
+      indexUrl: 'aleiqinuo',
+      name: 'aleiqinuo',
       id: '1'
     },
     {
-      indexUrl: 'wangye',
-      name: '',
+      indexUrl: 'linni',
+      name: 'linni',
       id: '2'
     },
     {
-      indexUrl: 'wuqi',
-      name: 'wuqi',
+      indexUrl: 'wuqi240425',
+      name: 'wuqi240425',
       id: '3'
     },
     {
