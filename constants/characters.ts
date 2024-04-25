@@ -178,13 +178,6 @@ export const Characters: Character[] = [
         star: 5
     },
     {
-        name: '纳维莱特',
-        type: Ele.Water,
-        nick: '孙悟空',
-        id: 'naweilaite',
-        star: 5
-    },
-    {
         name: '枫原万叶',
         type: Ele.Wind,
         nick: '',
@@ -330,5 +323,82 @@ export const Characters: Character[] = [
         nick: '',
         id: 'jiaming',
         star: 4
+    },
+    {
+        name: '林尼',
+        type: Ele.Fire,
+        nick: '',
+        id: 'linni',
+        star: 5
+    },
+    {
+        name: '琳妮特',
+        type: Ele.Wind,
+        nick: '',
+        id: 'linnite',
+        star: 4
+    },
+    {
+        name: '菲米尼',
+        type: Ele.Ice,
+        nick: '',
+        id: 'feimini',
+        star: 4
+    },
+    {
+        name: '莱欧斯利',
+        type: Ele.Ice,
+        nick: '',
+        id: 'laiousili',
+        star: 5
+    },
+    {
+        name: '夏洛蒂',
+        type: Ele.Ice,
+        nick: '',
+        id: 'xialuodi',
+        star: 4
+    },
+    {
+        name: '芙宁娜',
+        type: Ele.Water,
+        nick: '',
+        id: 'funingna',
+        star: 5
+    },
+    {
+        name: '娜维娅',
+        type: Ele.Geo,
+        nick: '',
+        id: 'naweiya',
+        star: 5
+    },
+    {
+        name: '夏沃蕾',
+        type: Ele.Fire,
+        nick: '',
+        id: 'xiawolei',
+        star: 4
+    },
+    {
+        name: '千织',
+        type: Ele.Geo,
+        nick: '',
+        id: 'qianzhi',
+        star: 5
+    },
+    {
+        name: '阿蕾奇诺',
+        type: Ele.Fire,
+        nick: '',
+        id: 'aleiqinuo',
+        star: 5
+    },
+    {
+        name: '纳维莱特',
+        type: Ele.Water,
+        nick: '',
+        id: 'naweilaite',
+        star: 5
     },
 ]
