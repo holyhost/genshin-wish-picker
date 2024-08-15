@@ -8,18 +8,22 @@ import { useDisclosure } from '@mantine/hooks'
 import { nanoid } from 'nanoid'
 import React, { MouseEvent, useState } from 'react'
 import { EMOJIS } from '@/constants/emojis'
-import { IconDotsVertical, IconEdit, IconTrash } from '@tabler/icons-react'
+import { IconDotsVertical, IconEdit, IconPick, IconTrash } from '@tabler/icons-react'
 
 const GroupData = () => {
     const [content, setContent] = useState('')
     const [showCheck, setShowCheck] = useState(false)
     const [group, setGroup] = useState<GroupType>()
     const [opened, { open, close }] = useDisclosure(false);
-    const {friends, updateGroup, removeGroup} = useFriendsStore()
+    const {friends, updateGroup, removeGroup, topGroup} = useFriendsStore()
     const alterGroupName = (event: MouseEvent, gp: GroupType)=>{
         setGroup(gp)
         event.stopPropagation()
         open()
+    }
+    const chooseForPick = (event: MouseEvent, gp: GroupType)=>{
+        event.stopPropagation()
+        topGroup(gp.id)
     }
     const saveData = ()=> {
         if(!content) return
@@ -49,6 +53,7 @@ const GroupData = () => {
     <Paper shadow='md' pl={20} pt={10}>
         <ScrollArea h={'82vh'} scrollbarSize='0'>
             <Title order={3}>共有{friends.length}个分组</Title>
+            <Text mt={10}><span style={{color: 'red'}}>*</span> 默认从第一个分组点名</Text>
             <Accordion>
                 {friends.map((f,fin) => <Accordion.Item key={f.id} value={f.name}>
                     <Accordion.Control icon={EMOJIS[fin]}>
@@ -56,9 +61,14 @@ const GroupData = () => {
                             {f.name} 
                             <Menu trigger='hover'>
                                 <Menu.Target>
-                                    <IconDotsVertical color='#bba884' size={16} onClick={(e)=> (e.stopPropagation())}/>
+                                    <IconDotsVertical color='#bba884' size={16} stroke="3" onClick={(e)=> (e.stopPropagation())}/>
                                 </Menu.Target>
                                 <Menu.Dropdown>
+                                    {fin > 0 && <Menu.Item 
+                                        onClick={(e)=>chooseForPick(e, f)}
+                                        leftSection={<IconPick color='teal' style={{ width: rem(14), height: rem(14) }} />}>
+                                        从此分组点名
+                                    </Menu.Item>}
                                     <Menu.Item 
                                         onClick={(e)=>alterGroupName(e, f)}
                                         leftSection={<IconEdit style={{ width: rem(14), height: rem(14) }} />}>

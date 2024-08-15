@@ -13,7 +13,8 @@ interface FriendsState {
     friends: GroupType[],
     addGroup: (f: GroupType)=> void,
     updateGroup: (f: GroupType)=> void,
-    removeGroup: (id: string)=> void
+    removeGroup: (id: string)=> void,
+    topGroup: (id: string)=> void
 }
 
 const useFriendsStore = create<FriendsState>()(
@@ -27,6 +28,12 @@ const useFriendsStore = create<FriendsState>()(
             }, true),
             removeGroup: (id: string)=> set((state) => {
                 const tempArr = state.friends.filter(item => item.id !== id)
+                return {friends: [...tempArr]}
+            }, true),
+            topGroup: (id: string)=> set((state) => {
+                const top = state.friends.find(item => item.id === id)
+                const tempArr = state.friends.filter(item => item.id !== id)
+                top && tempArr.unshift(top)
                 return {friends: [...tempArr]}
             }, true)
         }),
