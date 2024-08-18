@@ -23,19 +23,21 @@ const useFriendsStore = create<FriendsState>()(
             friends: [],
             addGroup: (f)=> set((state) => ({friends: [...state.friends, f]})),
             updateGroup: (f)=> set((state) => {
-                const tempArr = state.friends.filter(item => item.id !== f.id)
-                return {friends: [...tempArr, f]}
-            }, true),
+                const tempArr: GroupType[] = [...state.friends]
+                const index = state.friends.findIndex(item => item.id === f.id)
+                tempArr[index] = {...f}
+                return {friends: [...tempArr]}
+            }),
             removeGroup: (id: string)=> set((state) => {
                 const tempArr = state.friends.filter(item => item.id !== id)
                 return {friends: [...tempArr]}
-            }, true),
+            }),
             topGroup: (id: string)=> set((state) => {
                 const top = state.friends.find(item => item.id === id)
                 const tempArr = state.friends.filter(item => item.id !== id)
                 top && tempArr.unshift(top)
                 return {friends: [...tempArr]}
-            }, true)
+            })
         }),
         {
             name: 'all-friends',

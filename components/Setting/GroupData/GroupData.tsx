@@ -8,13 +8,12 @@ import { useDisclosure } from '@mantine/hooks'
 import { nanoid } from 'nanoid'
 import React, { MouseEvent, useState } from 'react'
 import { EMOJIS } from '@/constants/emojis'
-import { IconDotsVertical, IconEdit, IconPick, IconTrash } from '@tabler/icons-react'
+import { IconDotsVertical, IconEdit, IconPick, IconPlus, IconTrash } from '@tabler/icons-react'
 
 const GroupData = () => {
     const [content, setContent] = useState('')
     const [showCheck, setShowCheck] = useState(false)
     const [showFriend, setShowFriend] = useState<Character | undefined>(undefined)
-    console.log(showFriend)
     const [group, setGroup] = useState<GroupType>()
     const [opened, { open, close }] = useDisclosure(false);
     const { friends, updateGroup, removeGroup, topGroup } = useFriendsStore()
@@ -22,6 +21,14 @@ const GroupData = () => {
         setGroup(gp)
         event.stopPropagation()
         open()
+    }
+    const addGroupMember = (event: MouseEvent, gp: GroupType) => {
+        event.stopPropagation()
+        const randomCharacter = Characters[gp.data.length % Characters.length]
+        setGroup({...gp})
+        setShowFriend({
+            ...randomCharacter
+        })
     }
     const chooseForPick = (event: MouseEvent, gp: GroupType) => {
         event.stopPropagation()
@@ -49,6 +56,12 @@ const GroupData = () => {
     const doRemove = () => {
         group && removeGroup(group.id)
         setShowCheck(false)
+        setGroup(undefined)
+    }
+
+    const clickFriendItem = (item: Character, gp: GroupType) => {
+        setShowFriend(item)
+        setGroup({...gp})
     }
 
     const changeGuard = (name:string | null) => {
@@ -63,19 +76,34 @@ const GroupData = () => {
     }
 
     const saveShowFriend = ()=> {
-        showFriend && friends.forEach(group => group.data.forEach(f => {
-            if(f.fid === showFriend.fid){
-                f.id = showFriend.id
-                f.name = showFriend.name
-                f.nick = showFriend.nick
-                f.star = showFriend.star
-                f.type = showFriend.type
-                group.updateTime = getFormatDateTime(new Date)
-                updateGroup(group)
-                setShowFriend(undefined)
-                return
-            }
-        }))
+        if(!showFriend || !group || !showFriend.nick){
+            return
+        }
+        const f = group.data.find(item => item.fid === showFriend.fid)
+        if(f){
+            f.id = showFriend.id
+            f.name = showFriend.name
+            f.nick = showFriend.nick
+            f.star = showFriend.star
+            f.type = showFriend.type
+        }else{
+            group.data.push({...showFriend, fid: nanoid()})
+        }
+        group.updateTime = getFormatDateTime(new Date)
+        updateGroup(group)
+        setShowFriend(undefined)
+        setGroup(undefined)
+    }
+
+    const deleteFriend = ()=> {
+        if(group && showFriend){
+            const newGroup = {...group}
+            newGroup.data = group.data.filter(f => f.fid !== showFriend.fid)
+            newGroup.updateTime = getFormatDateTime(new Date)
+            updateGroup({...newGroup})
+            setShowFriend(undefined)
+            setGroup(undefined)
+        }
     }
 
     return (
@@ -108,6 +136,11 @@ const GroupData = () => {
                                             修改分组名称
                                         </Menu.Item>
                                         <Menu.Item
+                                            onClick={(e) => addGroupMember(e, f)}
+                                            leftSection={<IconPlus color='blue' style={{ width: rem(14), height: rem(14) }} />}>
+                                            新增成员
+                                        </Menu.Item>
+                                        <Menu.Item
                                             onClick={(e) => willRemoveGroup(e, f)}
                                             color="red"
                                             leftSection={<IconTrash style={{ width: rem(14), height: rem(14) }} />}
@@ -133,7 +166,7 @@ const GroupData = () => {
                                 </Table.Thead>
                                 <Table.Tbody>
                                     {f.data.map((item, ind) => (
-                                        <Table.Tr key={item.name + '-' + item.nick + ind} onClick={() => setShowFriend({...item})}>
+                                        <Table.Tr key={item.name + '-' + item.nick + ind} onClick={() => clickFriendItem({...item}, f)}>
                                             <Table.Td><Avatar className='user' src={`/assets/images/avatar/${item.id}.png`} alt="friend's avatar" /></Table.Td>
                                             <Table.Td>{item.nick}</Table.Td>
                                             <Table.Td>{item.name}</Table.Td>
@@ -169,19 +202,27 @@ const GroupData = () => {
                     </Group>
                 </Stack>}
             </Modal>
-            <Modal opened={showFriend !== undefined} onClose={() => setShowFriend(undefined)} title="管理" centered>
+            <Modal opened={showFriend !== undefined} onClose={() => setShowFriend(undefined)} title={showFriend?.fid ? '更新成员信息' : '新增成员'} centered>
                 {showFriend && <Stack>
-                    <div style={{display: 'flex'}}>
-                        <Avatar className='user' size={80} mr={60} mt={40} src={`/assets/images/avatar/${showFriend.id}.png`} alt="friend's avatar" />
-                        <div style={{width: '12rem'}}>
-
+                    <Group justify={'flex-center'}>
+                        <Avatar className='user' size={80} mr={60} src={`/assets/images/avatar/${showFriend.id}.png`} alt="friend's avatar" />
+                        <div style={{width: '13rem'}}>
+                            <Select
+                                checkIconPosition="right"
+                                data={Characters.map(c => c.name)}
+                                maxDropdownHeight="150"
+                                label="护道人"
+                                placeholder="选择一个护道人"
+                                defaultValue={showFriend.name}
+                                onChange={changeGuard}
+                            />
                             <TextInput
                                 placeholder="请输入姓名"
                                 value={showFriend.nick}
                                 label="姓名"
                                 onChange={(event: any) => setShowFriend({...showFriend, nick: event.target.value})}
                                 rightSectionPointerEvents="all"
-                                mt="md"
+                                mt="sm"
                                 rightSection={
                                     <CloseButton
                                         aria-label="Clear input"
@@ -190,20 +231,15 @@ const GroupData = () => {
                                     />
                                 }
                             />
-                            <Select
-                                checkIconPosition="right"
-                                data={Characters.map(c => c.name)}
-                                pb={150}
-                                label="护道人"
-                                placeholder="选择一个护道人"
-                                defaultValue={showFriend.name}
-                                onChange={changeGuard}
-                            />
+                            
                         </div>
-                    </div>
-                    <Group justify='flex-center'>
+                    </Group>
+                    {showFriend.fid && <Group justify={'flex-start'} onClick={deleteFriend}>
+                        <IconTrash color='red'/> <Text>删除此成员</Text>
+                    </Group>}
+                    <Group justify='center' mt={100}>
                         <GenshinButton type='cancel' title='取消' click={() => setShowFriend(undefined)} />
-                        <GenshinButton type='ok' title='保存' click={() => saveShowFriend()} />
+                        {showFriend.nick && <GenshinButton type='ok' title='保存' click={() => saveShowFriend()} />}
                     </Group>
                 </Stack>}
             </Modal>
