@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import classes from './WishResult.module.css'
 import { IconStarFilled } from '@tabler/icons-react'
-import { Character } from '@/constants/characters'
+import { Character, Characters } from '@/constants/characters'
 
 type Props = {
   count?: number,
@@ -9,10 +9,10 @@ type Props = {
 }
 
 const WishResult = ({count=1, friends}: Props) => {
-  friends = friends.sort((a, b) => b.star-a.star)
   const [ready, setReady] = useState(false)
   const [showRoles, setShowRoles] = useState(false)
   const [friend, setFriend] = useState(friends[0])
+  const [groupedFriends, setGroupedFriends] = useState([...friends])
   const [leftCount, setLeftCount] = useState(count-1)
   const eleAudio = useRef<HTMLAudioElement>(null)
   const playResult = ()=>{
@@ -25,6 +25,19 @@ const WishResult = ({count=1, friends}: Props) => {
       setFriend(friends[friends.length - leftCount])
       setLeftCount(leftCount-1)
     }else if(count > 1){
+      
+      
+      if(friend.nick){
+        const initArr: Character[] = []
+        friends = friends.sort((a, b) => b.star-a.star)
+        const result = friends.reduce((pre, cur)=>{
+          if(pre.length  !== count && !pre.find((e: Character) => e.nick === cur.nick) ){
+            pre = pre.concat(friends.filter(f => f.nick === cur.nick))
+          }
+          return pre
+        },initArr)
+        setGroupedFriends([...result])
+      }
       setShowRoles(true)
     }
     
@@ -33,7 +46,7 @@ const WishResult = ({count=1, friends}: Props) => {
     <div className={classes.container} onClick={goNext}>
       <audio ref={eleAudio} onCanPlayThrough={playResult} src='/assets/mp3/wished.wav'/>
       {showRoles ? <div className={classes.roles}>
-            {friends.map((f, ind) => (
+            {groupedFriends.map((f, ind) => (
               <div className={classes.card} key={f.id + "-role" + ind} style={{backgroundImage: 'url(/assets/images/bg-role-item.png)'}}>
                 <img className={classes.roleItem} src={`/assets/images/character/${f.id}.png`} alt="role result" />
                 {f.nick && <div className={classes.roleNickContainer}>
