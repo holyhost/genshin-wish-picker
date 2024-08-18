@@ -26,6 +26,7 @@ export type Character = {
     nick?: string,
     type: Ele,
     id: string,
+    fid?: string,
     star: 1 | 2 | 3 | 4| 5
 }
 
