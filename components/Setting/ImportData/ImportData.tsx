@@ -23,7 +23,7 @@ const ImportData = () => {
         const len = newGenshinFriends.length
         addGroup({
             id: nanoid(),
-            data: newFriends.map((name, i) => ({...newGenshinFriends[i%len], nick: name})),
+            data: newFriends.map((name, i) => ({...newGenshinFriends[i%len], nick: name, fid: nanoid()})),
             updateTime,
             name: groupName
         })
