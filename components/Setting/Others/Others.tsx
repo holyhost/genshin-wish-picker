@@ -68,6 +68,14 @@ const Others = () => {
                         <Text size="xs" mt={4}>🍒🍒🍒🍒</Text>
                     </Timeline.Item>
 
+                    <Timeline.Item bullet={<IconGitCommit size={12} />} title="Release: v1.0.1" lineVariant='solid'>
+                        <Text c="orange" size="sm">功能更新</Text>
+                        <Text c="indigo" size="sm">1. 10连抽的逻辑更改为：从分组中抽10次</Text>
+                        <Text c="indigo" size="sm">2. "我的分组"中第一个分组用于随机抽的数据</Text>
+                        <Text c="indigo" size="sm">3. 点击分组中的条目，可以删除，修改</Text>
+                        <Text c="indigo" size="sm">4. 点击分组更多选项，可以新增条目</Text>
+                        <Text size="xs" mt={4}>2024-08-17</Text>
+                    </Timeline.Item>
                     <Timeline.Item bullet={<IconGitCommit size={12} />} title="Release: v1.0.1" lineVariant='dashed'>
                         <Text c="orange" size="sm">初始化版本，基本功能：</Text>
                         <Text c="indigo" size="sm">1. 单抽，10连抽</Text>
