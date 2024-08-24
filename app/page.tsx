@@ -4,7 +4,6 @@ import GenshinLoaing from '@/components/GenshinLoading/GenshinLoaing';
 import { useEffect, useState } from 'react';
 import Banner from '@/components/Banner/Banner';
 import Wish from '@/components/Wish/Wish';
-import { count } from 'console';
 
 
 export default function HomePage() {
@@ -36,7 +35,7 @@ export default function HomePage() {
     setAimName(posts[position].indexUrl)
   }
 
-  const posts = [
+  const posts_backup = [
     {
       indexUrl: 'aleiqinuo',
       name: 'aleiqinuo',
@@ -50,6 +49,28 @@ export default function HomePage() {
     {
       indexUrl: 'wuqi240425',
       name: 'wuqi240425',
+      id: '3'
+    },
+    {
+      indexUrl: 'friends',
+      name: 'friends',
+      id: '4'
+    }
+  ]
+  const posts = [
+    {
+      indexUrl: 'aimeiliai',
+      name: 'aimeiliai',
+      id: '1'
+    },
+    {
+      indexUrl: 'yelan',
+      name: 'yelan',
+      id: '2'
+    },
+    {
+      indexUrl: 'wuqi240820',
+      name: 'wuqi240820',
       id: '3'
     },
     {

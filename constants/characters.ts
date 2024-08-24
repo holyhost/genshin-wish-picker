@@ -402,4 +402,18 @@ export const Characters: Character[] = [
         id: 'naweilaite',
         star: 5
     },
+    {
+        name: '希格雯',
+        type: Ele.Water,
+        nick: '',
+        id: 'xigewen',
+        star: 5
+    },
+    {
+        name: '艾梅莉埃',
+        type: Ele.Dendro,
+        nick: '',
+        id: 'aimeiliai',
+        star: 5
+    }
 ]
